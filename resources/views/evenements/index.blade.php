@@ -36,36 +36,46 @@
                 <tbody>
                     @foreach($evenements as $event)
                     <tr class="table-row">
-                        <td class="table-cell font-bold">{{ $event->theme }}</td>
-                        <td class="table-cell">
+                        {{-- Added data-label="Theme" --}}
+                        <td class="table-cell font-bold" data-label="Theme">
+                            {{ $event->theme }}
+                        </td>
+
+                        {{-- Added data-label="Schedule" --}}
+                        <td class="table-cell" data-label="Schedule">
                             <div class="date-range">
                                 <span>{{ $event->date_debut }}</span>
                                 <span class="date-separator">→</span>
                                 <span>{{ $event->date_fin }}</span>
                             </div>
                         </td>
-                        <td class="table-cell text-muted text-truncate">{{ $event->description }}</td>
-                        <td class="table-cell">
+
+                        {{-- Added data-label="Description" --}}
+                        <td class="table-cell text-muted text-truncate" data-label="Description">
+                            {{ $event->description }}
+                        </td>
+
+                        {{-- Added data-label="Daily Cost" --}}
+                        <td class="table-cell" data-label="Daily Cost">
                             <span class="cost-badge">${{ number_format($event->cout_journalier, 2) }}</span>
                         </td>
-                        <td class="table-cell">
+
+                        {{-- Added data-label="Expert" --}}
+                        <td class="table-cell" data-label="Expert">
                             <span class="expert-tag">ID: {{ $event->expert_id }}</span>
                         </td>
-                        <td class="table-cell actions-cell">
-                            <a class="btn-icon view-link" title="View"
-                               href="{{ route('evenements.show', $event->id) }}">
+
+                        {{-- Added data-label="Actions" --}}
+                        <td class="table-cell actions-cell" data-label="Actions">
+                            <a class="btn-icon view-link" href="{{ route('evenements.show', $event->id) }}">
                                 View
                             </a>
 
-                            <a class="btn-icon edit-link" title="Edit"
-                               href="{{ route('evenements.edit', $event->id) }}">
+                            <a class="btn-icon edit-link" href="{{ route('evenements.edit', $event->id) }}">
                                 Edit
                             </a>
 
-                            <form action="{{ route('evenements.destroy', $event->id) }}" 
-                                  method="POST" 
-                                  class="inline-form"
-                                  onsubmit="return confirm('Are you sure you want to delete this event?')">
+                            <form action="{{ route('evenements.destroy', $event->id) }}" method="POST" class="inline-form">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn-icon delete-link">

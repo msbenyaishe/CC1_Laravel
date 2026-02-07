@@ -379,3 +379,151 @@ body {
         gap: 1.5rem;
     }
 }
+
+
+/* =====================================
+    ADVANCED RESPONSIVE OVERRIDES
+===================================== */
+
+@media (max-width: 768px) {
+    /* 1. Container & Card Scaling */
+    .form-container, .list-container, .details-container {
+        padding: 1rem 0.5rem;
+    }
+
+    .form-card, .list-card, .details-card {
+        padding: 1.5rem 1rem;
+    }
+
+    /* 2. Header & Action Adjustments */
+    .list-header, .details-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .header-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    /* 3. Form Layout Fixes */
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+        gap: 0.75rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* 4. Vertical Stacked Table Logic */
+    .events-table, .ateliers-table, 
+    .events-table thead, .ateliers-table thead,
+    .events-table tbody, .ateliers-table tbody,
+    .events-table th, .ateliers-table th,
+    .events-table td, .ateliers-table td,
+    .events-table tr, .ateliers-table tr {
+        display: block;
+    }
+
+    /* Hide standard headers */
+    .events-table thead tr, .ateliers-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .table-row {
+        border: 1px solid var(--border-color);
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        padding: 0.5rem;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .table-cell {
+        border: none;
+        position: relative;
+        padding: 1rem 0.75rem 1rem 45% !important; 
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        min-height: 50px;
+        border-bottom: 1px solid #f1f5f9;
+        white-space: normal;
+    }
+
+    .table-cell:last-child {
+        border-bottom: none;
+    }
+
+    /* The label injector */
+    .table-cell::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0.75rem;
+        width: 40%;
+        text-align: left;
+        font-weight: 700;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+    }
+
+    /* FIX: Actions Cell alignment */
+    .actions-cell {
+        display: flex !important; /* Switch from grid to flex */
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 1.25rem 0.75rem !important;
+        background: #f8fafc;
+        border-top: 1px dashed var(--border-color);
+    }
+
+    .actions-container {
+        display: flex;
+        gap: 8px; /* Proper gap between buttons */
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .btn-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        text-decoration: none !important;
+        font-weight: 600;
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .view-link { background: #f0f7ff; color: #0066ff; border-color: #cce0ff; }
+    .edit-link { background: #fff9eb; color: #d97706; border-color: #fef3c7; }
+    .delete-link { background: #fff1f2; color: #e11d48; border-color: #ffe4e6; }
+
+    .inline-form { display: inline; margin: 0; }
+
+    /* 5. Typography Scaling */
+    .page-title { font-size: 1.4rem; }
+    .info-value { font-size: 1rem; }
+    .info-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .header-actions { grid-template-columns: 1fr; }
+}
