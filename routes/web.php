@@ -3,16 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvenementController;
 
-/*
-|--------------------------------------------------------------------------
-| Home page = Event list
-|--------------------------------------------------------------------------
-*/
-Route::get('/', [EvenementController::class, 'index'])->name('home');
+// 1. Map the root '/' to the index method AND give it the name 'evenements.index'
+Route::get('/', [EvenementController::class, 'index'])->name('evenements.index');
 
-/*
-|--------------------------------------------------------------------------
-| Resource routes
-|--------------------------------------------------------------------------
-*/
+// 2. Define the other resource routes
 Route::resource('evenements', EvenementController::class)->except(['index']);
