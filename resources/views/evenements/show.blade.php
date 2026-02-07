@@ -14,7 +14,7 @@
             </div>
             <div class="header-actions">
                 <a href="{{ route('evenements.index') }}" class="btn-secondary">Back to List</a>
-                <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn-primary">Edit Event</a>
+                <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn-primary" style="text-decoration: none;">Edit Event</a>
             </div>
         </header>
 

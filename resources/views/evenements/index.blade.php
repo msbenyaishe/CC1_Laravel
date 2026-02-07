@@ -78,7 +78,7 @@
                             <form action="{{ route('evenements.destroy', $event->id) }}" method="POST" class="inline-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn-icon delete-link">
+                                <button type="submit" class="btn-icon delete-link" onclick="confirm('Are you sure?')">
                                     Delete
                                 </button>
                             </form>
