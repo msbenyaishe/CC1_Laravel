@@ -1,0 +1,293 @@
+/* =====================================
+   GOOGLE FONT & GLOBAL RESET
+===================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+}
+
+/* =====================================
+   COMMON TITLES
+===================================== */
+.page-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.section-title {
+    margin: 40px 0 15px;
+    color: #34495e;
+}
+
+/* =====================================
+   SHARED TABLE STYLES
+===================================== */
+.details-table,
+.ateliers-table,
+.events-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.details-table td,
+.ateliers-table td,
+.ateliers-table th,
+.events-table .table-cell {
+    border: 1px solid #ddd;
+    padding: 12px;
+    color: #2c3e50;
+}
+
+.table-header {
+    background-color: #3498db;
+    color: white;
+    text-align: left;
+    padding: 12px;
+}
+
+.table-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-row:hover {
+    background-color: #eef3f7;
+}
+
+.label-cell {
+    font-weight: bold;
+    background-color: #ecf0f1;
+    width: 30%;
+}
+
+.value-cell {
+    color: #2c3e50;
+}
+
+/* =====================================
+   INDEX PAGE
+===================================== */
+.page-event-index {
+    padding: 30px;
+}
+
+.success-message {
+    color: #2ecc71;
+    background-color: #eafaf1;
+    border: 1px solid #c3e6cb;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    width: fit-content;
+    border-radius: 4px;
+}
+
+.actions-cell {
+    white-space: nowrap;
+}
+
+.action-link {
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.view-link { color: #2980b9; }
+.edit-link { color: #f39c12; }
+
+.inline-form {
+    display: inline;
+}
+
+.delete-button {
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+
+/* =====================================
+   SHOW PAGE
+===================================== */
+.page-event-show {
+    padding: 30px;
+}
+
+/* =====================================
+   EDIT PAGE (FORM)
+===================================== */
+.page-event-edit {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-list {
+    background-color: #fdecea;
+    border: 1px solid #f5c6cb;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    color: #c0392b;
+    border-radius: 6px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.error-item {
+    margin-left: 18px;
+}
+
+.event-form {
+    background-color: #ffffff;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Form fields */
+.form-label {
+    display: block;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 6px;
+    margin-top: 18px;
+}
+
+.form-label:first-of-type {
+    margin-top: 0;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Buttons */
+.primary-button {
+    margin-top: 25px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.primary-button:hover {
+    background-color: #2980b9;
+}
+
+.secondary-link {
+    margin-left: 18px;
+    text-decoration: none;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.secondary-link:hover {
+    text-decoration: underline;
+}
+
+/* =====================================
+   📱 RESPONSIVE DESIGN
+===================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .page-event-index,
+    .page-event-show,
+    .page-event-edit {
+        padding: 20px;
+    }
+
+    .event-form {
+        padding: 20px;
+    }
+
+    .table-header,
+    .details-table td,
+    .ateliers-table td,
+    .events-table .table-cell {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    /* Make tables scroll horizontally on phones */
+    .details-table,
+    .ateliers-table,
+    .events-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .primary-button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .secondary-link {
+        display: block;
+        margin: 15px 0 0;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .page-event-index,
+    .page-event-show,
+    .page-event-edit {
+        padding: 15px;
+    }
+
+    .event-form {
+        padding: 20px;
+    }
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
