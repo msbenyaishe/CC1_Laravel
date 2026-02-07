@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Liste des événements</title>
+    <title>Event List</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body class="page-event-index">
 
-<h2 class="page-title">Liste des événements</h2>
+<h2 class="page-title">Event List</h2>
 
 @if(session('success'))
     <p class="success-message">{{ session('success') }}</p>
@@ -14,11 +14,11 @@
 <div class="table-wrapper">
     <table class="events-table">
         <tr>
-            <th class="table-header">Thème</th>
-            <th class="table-header">Date début</th>
-            <th class="table-header">Date fin</th>
+            <th class="table-header">Theme</th>
+            <th class="table-header">Start Date</th>
+            <th class="table-header">End Date</th>
             <th class="table-header">Description</th>
-            <th class="table-header">Coût journalier</th>
+            <th class="table-header">Daily Cost</th>
             <th class="table-header">Expert</th>
             <th class="table-header">Actions</th>
         </tr>
@@ -33,11 +33,11 @@
             <td class="table-cell">{{ $event->expert_id }}</td>
             <td class="table-cell actions-cell">
                 <a class="action-link view-link" href="{{ route('evenements.show', $event->id) }}">
-                    Consulter
+                    View
                 </a>
 
                 <a class="action-link edit-link" href="{{ route('evenements.edit', $event->id) }}">
-                    Modifier
+                    Edit
                 </a>
 
                 <form action="{{ route('evenements.destroy', $event->id) }}"
@@ -47,7 +47,7 @@
                     @method('DELETE')
                     <button type="submit" class="delete-button"
                             onclick="confirm('Are you sure ?')">
-                        Supprimer
+                        Delete
                     </button>
                 </form>
             </td>
