@@ -1,60 +1,83 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Event List</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body class="page-event-index">
+@extends('layouts.master')
 
-<h2 class="page-title">Event List</h2>
+@section('title', 'Event List')
 
-@if(session('success'))
-    <p class="success-message">{{ session('success') }}</p>
-@endif
-<div class="table-wrapper">
-    <table class="events-table">
-        <tr>
-            <th class="table-header">Theme</th>
-            <th class="table-header">Start Date</th>
-            <th class="table-header">End Date</th>
-            <th class="table-header">Description</th>
-            <th class="table-header">Daily Cost</th>
-            <th class="table-header">Expert</th>
-            <th class="table-header">Actions</th>
-        </tr>
+@section('body-class', 'page-event-index')
 
-        @foreach($evenements as $event)
-        <tr class="table-row">
-            <td class="table-cell">{{ $event->theme }}</td>
-            <td class="table-cell">{{ $event->date_debut }}</td>
-            <td class="table-cell">{{ $event->date_fin }}</td>
-            <td class="table-cell">{{ $event->description }}</td>
-            <td class="table-cell">{{ $event->cout_journalier }}</td>
-            <td class="table-cell">{{ $event->expert_id }}</td>
-            <td class="table-cell actions-cell">
-                <a class="action-link view-link" href="{{ route('evenements.show', $event->id) }}">
-                    View
-                </a>
+@section('content')
+<div class="list-container">
+    <div class="list-card">
+        <header class="list-header">
+            <div>
+                <h2 class="page-title">Event List</h2>
+                <p class="subtitle">Manage and monitor all scheduled event sessions.</p>
+            </div>
+        </header>
 
-                <a class="action-link edit-link" href="{{ route('evenements.edit', $event->id) }}">
-                    Edit
-                </a>
+        @if(session('success'))
+            <div class="success-alert">
+                <span class="alert-icon">✓</span>
+                {{ session('success') }}
+            </div>
+        @endif
 
-                <form action="{{ route('evenements.destroy', $event->id) }}"
-                    method="POST"
-                    class="inline-form">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="delete-button"
-                            onclick="confirm('Are you sure ?')">
-                        Delete
-                    </button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </table>
+        <div class="table-wrapper">
+            <table class="events-table">
+                <thead>
+                    <tr>
+                        <th class="table-header">Theme</th>
+                        <th class="table-header">Schedule</th>
+                        <th class="table-header">Description</th>
+                        <th class="table-header">Daily Cost</th>
+                        <th class="table-header">Expert</th>
+                        <th class="table-header">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($evenements as $event)
+                    <tr class="table-row">
+                        <td class="table-cell font-bold">{{ $event->theme }}</td>
+                        <td class="table-cell">
+                            <div class="date-range">
+                                <span>{{ $event->date_debut }}</span>
+                                <span class="date-separator">→</span>
+                                <span>{{ $event->date_fin }}</span>
+                            </div>
+                        </td>
+                        <td class="table-cell text-muted text-truncate">{{ $event->description }}</td>
+                        <td class="table-cell">
+                            <span class="cost-badge">${{ number_format($event->cout_journalier, 2) }}</span>
+                        </td>
+                        <td class="table-cell">
+                            <span class="expert-tag">ID: {{ $event->expert_id }}</span>
+                        </td>
+                        <td class="table-cell actions-cell">
+                            <a class="btn-icon view-link" title="View"
+                               href="{{ route('evenements.show', $event->id) }}">
+                                View
+                            </a>
+
+                            <a class="btn-icon edit-link" title="Edit"
+                               href="{{ route('evenements.edit', $event->id) }}">
+                                Edit
+                            </a>
+
+                            <form action="{{ route('evenements.destroy', $event->id) }}" 
+                                  method="POST" 
+                                  class="inline-form"
+                                  onsubmit="return confirm('Are you sure you want to delete this event?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-icon delete-link">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
-</body>
-</html>
+@endsection
