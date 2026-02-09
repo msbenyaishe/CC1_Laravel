@@ -36,12 +36,11 @@
                 <tbody>
                     @foreach($evenements as $event)
                     <tr class="table-row">
-                        {{-- Added data-label="Theme" --}}
+        
                         <td class="table-cell font-bold" data-label="Theme">
                             {{ $event->theme }}
                         </td>
 
-                        {{-- Added data-label="Schedule" --}}
                         <td class="table-cell" data-label="Schedule">
                             <div class="date-range">
                                 <span>{{ $event->date_debut }}</span>
@@ -50,22 +49,18 @@
                             </div>
                         </td>
 
-                        {{-- Added data-label="Description" --}}
                         <td class="table-cell text-muted text-truncate" data-label="Description">
                             {{ $event->description }}
                         </td>
 
-                        {{-- Added data-label="Daily Cost" --}}
                         <td class="table-cell" data-label="Daily Cost">
                             <span class="cost-badge">${{ number_format($event->cout_journalier, 2) }}</span>
                         </td>
 
-                        {{-- Added data-label="Expert" --}}
                         <td class="table-cell" data-label="Expert">
                             <span class="expert-tag">ID: {{ $event->expert_id }}</span>
                         </td>
 
-                        {{-- Added data-label="Actions" --}}
                         <td class="table-cell actions-cell" data-label="Actions">
                             <a class="btn-icon view-link" href="{{ route('evenements.show', $event->id) }}">
                                 View
